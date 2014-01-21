@@ -1,0 +1,37 @@
+\documentclass{beamer}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{textpos}
+\usepackage{tikz}
+\usepackage{dirtree}
+
+\usetheme{Rochester}
+\usecolortheme{beaver}
+
+\beamertemplatenavigationsymbolsempty
+
+\title{Positionierung in Sensornetzen}
+\author{Andr\'{e} Vogler, Torsten Braun}
+\date{\today}
+
+\titlegraphic{
+	\vspace{1.2cm}
+	\includegraphics[scale=0.2]{img/logo_htw}
+}
+
+\addtobeamertemplate{frametitle}{
+	\begin{textblock*}{\paperwidth}(225pt,-30pt)
+		\includegraphics[scale=0.15]{img/logo_htw}
+	\end{textblock*}
+}
+
+\setbeamertemplate{footline}[frame number]
+
+\begin{document}
+	\frame{\titlepage}
+	\frame{\frametitle{Agenda}\tableofcontents}
+	
+	\input{frames}	
+\end{document}
