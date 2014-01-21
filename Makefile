@@ -1,6 +1,11 @@
-all:
+all: presentation documentation
+
+presentation:
 	ls sections/*.tex | awk '{printf "\\input{%s}\n", $$1}' > frames.tex 
-	latexmk main.tex -f -pdf
+	latexmk presentation.tex -f -pdf
+
+documentation:
+	latexmk documentation.tex -f -pdf
 
 clean:
 	latexmk -C
@@ -10,4 +15,6 @@ clean:
 	rm -rf *.*~
 
 start:
-	pdf-presenter-console main.pdf -z
+	pdf-presenter-console presentation.pdf -z
+
+.PHONY: all
