@@ -8,3 +8,5 @@ auto
 *.snm
 *.toc
 *~
+*.fls
+frames.tex
