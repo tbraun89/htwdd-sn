@@ -12,6 +12,7 @@ clean:
 	rm -f *.nav
 	rm -f *.snm
 	rm -f *.bbl
+	rm -f *.fls
 	rm -rf *.*~
 
 start:
