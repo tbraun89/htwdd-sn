@@ -2,33 +2,38 @@
 \label{sec:methoden}
 
 \begin{frame}
-\frametitel{Methoden zur Positionsbestimmung}
-\begin{center}
-\includegrapics[scale=0.5]{img/algo1}
-\end{center}
+  \frametitle{Methoden zur Positionsbestimmung}
+  \begin{center}
+    \includegraphics[scale=0.35]{img/algo_1}
+  \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Methoden zur Positionsbestimmung}
+  \frametitle{Methoden zur Positionsbestimmung}
 
-\begin{itemize}
-   \item Anchor/Beacon Nodes
-   \item Signalstärkemessung
-   \item Hop Count
-   \item Zeitmessung
-   \item Auftreffwinkel
-\end{itemize}
-
+  \begin{itemize}
+  \item Anchor/Beacon Nodes
+  \item Signalstärkemessung
+  \item Hop Count
+  \item Zeitmessung
+  \item Auftreffwinkel
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Anchor/Beacon Nodes}
+  \frametitle{Anchor/Beacon Nodes}
 
-\begin{itemize}
-  \item Die Anchor Nodes haben eine bekannte Position (z.B. GPS oder fest einprogrammiert)
-  \item Für ein globales 2D Koordinatensystem sind 3 nicht linear angeordnete Anchor Nodes erforderlich, für ein 3D KS entsprechend 4.
-  \item Es wird nun entweder ein relatives Koordinatensystem mit allen nicht Anchor Nodes erstellt und dann mit Hilfe dieser in ein globales überführt oder es wird mit Hilfe der Anchor Nodes direkt jede einzelne Postion der Nodes bestimmt
-\end{itemize}
+  \begin{itemize}
+  \item Die Anchor Nodes haben eine bekannte Position (z.B. GPS oder
+    fest einprogrammiert)
+  \item Für ein globales 2D Koordinatensystem sind 3 nicht linear
+    angeordnete Anchor Nodes erforderlich, für ein 3D KS entsprechend
+    4.
+  \item Es wird nun entweder ein relatives Koordinatensystem mit allen
+    nicht Anchor Nodes erstellt und dann mit Hilfe dieser in ein
+    globales überführt oder es wird mit Hilfe der Anchor Nodes direkt
+    jede einzelne Postion der Nodes bestimmt
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -43,7 +48,9 @@
   \item Nachteile
   \begin{itemize}
     \item GPS für Anchor Nodes sehr teuer und verbrauchen viel Energie
-    \item Vorprogrammieren von festen Positionen bei großen Sensornetzen sehr aufwendig und nur bei festen Sensornetzen überhaupt möglich
+    \item Vorprogrammieren von festen Positionen bei großen
+      Sensornetzen sehr aufwendig und nur bei festen Sensornetzen
+      überhaupt möglich
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -52,9 +59,12 @@
 \frametitle{Signalstärkemessung (RSSI)}
 
 \begin{itemize}
-  \item Nutzt die Tatsache das in einem Kabellosen SN jeder Knoten sowohl senden als auch empfangen kann
-  \item Da die Signalstärke konstant quadratisch zur Entfernung abnimmt, ist theoretisch eine genaue Entfernungsmessung möglich
-  \item In der Praxis verhindern jedoch Störstrahlung und die Dämpfung/Reflexion von Hindernissen eine genaue Messung
+  \item Nutzt die Tatsache das in einem Kabellosen SN jeder Knoten
+    sowohl senden als auch empfangen kann
+  \item Da die Signalstärke konstant quadratisch zur Entfernung
+    abnimmt, ist theoretisch eine genaue Entfernungsmessung möglich
+  \item In der Praxis verhindern jedoch Störstrahlung und die
+    Dämpfung/Reflexion von Hindernissen eine genaue Messung
   \item 
 \end{itemize}
 \end{frame}
@@ -71,10 +81,14 @@
 \frametitle{Hop Count}
 
 \begin{itemize}
-  \item Basiert auf der Annahme das die Entfernung von 2 Nodes die miteinander kommunizieren können, kleiner ist als Reichweite der Sender völlig unabhängig
-    von der gemessenen Signalstärke
-  \item Es wird ein ungerichteter Graph aufgebaut mit den Nodes als Knoten und den direkten Verbindungen der Nodes untereinander als Kanten
-  \item Der Hop Count h_{i,j} von zwei Nodes ist der kürzeste Pfad zwischen diesen
+  \item Basiert auf der Annahme das die Entfernung von 2 Nodes die
+    miteinander kommunizieren können, kleiner ist als Reichweite der
+    Sender völlig unabhängig von der gemessenen Signalstärke
+  \item Es wird ein ungerichteter Graph aufgebaut mit den Nodes als
+    Knoten und den direkten Verbindungen der Nodes untereinander als
+    Kanten
+  \item Der Hop Count $h_{i,j}$ von zwei Nodes ist der kürzeste Pfad
+    zwischen diesen
   \item 
 \end{itemize}
 \end{frame}
