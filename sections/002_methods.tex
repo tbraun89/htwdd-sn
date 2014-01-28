@@ -2,6 +2,13 @@
 \label{sec:methoden}
 
 \begin{frame}
+\frametitel{Methoden zur Positionsbestimmung}
+\begin{center}
+\includegrapics[scale=0.5]{img/algo1}
+\end{center}
+\end{frame}
+
+\begin{frame}
 \frametitle{Methoden zur Positionsbestimmung}
 
 \begin{itemize}
@@ -42,7 +49,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Signalstärkemessung}
+\frametitle{Signalstärkemessung (RSSI)}
 
 \begin{itemize}
   \item Nutzt die Tatsache das in einem Kabellosen SN jeder Knoten sowohl senden als auch empfangen kann
@@ -53,7 +60,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Signalstärkemessung}
+\frametitle{Signalstärkemessung (RSSI)}
   \begin{center}
   \includegraphics[scale=0.5]{img/RSSI1}
 
@@ -64,12 +71,16 @@
 \frametitle{Hop Count}
 
 \begin{itemize}
-  \item mmmm
+  \item Basiert auf der Annahme das die Entfernung von 2 Nodes die miteinander kommunizieren können, kleiner ist als Reichweite der Sender völlig unabhängig
+    von der gemessenen Signalstärke
+  \item Es wird ein ungerichteter Graph aufgebaut mit den Nodes als Knoten und den direkten Verbindungen der Nodes untereinander als Kanten
+  \item Der Hop Count h_{i,j} von zwei Nodes ist der kürzeste Pfad zwischen diesen
+  \item 
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Hop Count}
+  \frametitle{Hop Count }
 
   \begin{center}
   \includegraphics[scale=0.5]{img/hop_count1}
@@ -79,7 +90,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Zeitmessung}
+\frametitle{Zeitmessung (ToA)}
 
 \begin{itemize}
   \item mmmm
@@ -87,7 +98,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Auftreffwinkel}
+\frametitle{Auftreffwinkel (AoA)}
 
 \begin{itemize}
   \item mmmm
