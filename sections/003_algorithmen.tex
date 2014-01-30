@@ -1,26 +1,7 @@
 \section{Positionierungs Algorithmen}
 \label{sec:algorithmen}
 
-\begin{frame}
-  \frametitle{Algorithmen - Warum nicht GPS?}
 
-  \begin{itemize}
-  \item Vorteile
-    \begin{itemize}
-    \item sehr genau (1 bis 3 Meter)
-    \item globale Position
-    \item einfach zu Implementieren
-    \end{itemize}
-  ~\\
-  \item Probleme
-    \begin{itemize}
-    \item schlechter Empfang in Gebäuden
-    \item hohe Kosten
-    \item zu groß und schwer für einen Sensorknoten
-    \item hoher Stromverbrauch
-    \end{itemize}
-  \end{itemize}
-\end{frame}
 
 \begin{frame}
   \frametitle{Algorithmen\footnote{Gholami, M. R. (2011). Positioning Algorithms for
@@ -78,35 +59,3 @@
   \end{center}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Signallaufzeitmessung (ToA)}
-
-  \begin{center}
-    \includegraphics[scale=0.35]{img/time1}\\~\\
-
-    $d = (t_{1} - t_{0}) \cdot c$\\~\\
-    $c=299\,792\,458\;\mathrm{m/s}$
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Signallaufzeitmessung (TDoA)}
-
-  \begin{center}
-    \includegraphics[scale=0.35]{img/time2}\\~\\
-
-    $d \approx (t_{1} - t_{0}) \cdot c_{0}$\\~\\
-    $c_{0}\footnote{bei 20° trockener Luft} = 343\mathrm{m/s}$
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Signallaufzeitmessung (RToF)}
-
-  \begin{center}
-    \includegraphics[scale=0.35]{img/time3}\\~\\
-
-    $d = \frac{t_{1} - t_{2} - t_{p}}{2} \cdot c$\\~\\
-    $c=299\,792\,458\;\mathrm{m/s}$
-  \end{center}
-\end{frame}

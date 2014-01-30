@@ -53,7 +53,7 @@
   \end{itemize}
   \item Nachteile
   \begin{itemize}
-    \item GPS für Anchor Nodes sehr teuer und verbrauchen viel Energie
+    \item GPS für Anchor Nodes teuer und verbraucht viel Energie
     \item Vorprogrammieren von festen Positionen bei großen
       Sensornetzen sehr aufwendig und nur bei festen Sensornetzen
       überhaupt möglich
@@ -62,7 +62,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Signalstärkemessung (RSSI)}
+\frametitle{Signalstärkemessung (RSSI)\footnote{Received Signal Strength Indication}}
 
 \begin{itemize}
   \item Nutzt die Tatsache das in einem Kabellosen SN jeder Knoten
@@ -71,7 +71,6 @@
     abnimmt, ist theoretisch eine genaue Entfernungsmessung möglich
   \item In der Praxis verhindern jedoch Störstrahlung und die
     Dämpfung/Reflexion von Hindernissen eine genaue Messung
-  \item 
 \end{itemize}
 \end{frame}
 
@@ -96,7 +95,6 @@ Berkeley, 2002.}}
     Kanten
   \item Der Hop Count $h_{i,j}$ von zwei Nodes ist der kürzeste Pfad
     zwischen diesen
-  \item 
 \end{itemize}
 \end{frame}
 
@@ -116,16 +114,21 @@ Berkeley, 2002.}}
 \begin{itemize}
   \item Time of Arrival (ToA)
   \item Time Difference of Arrival (TDoA)
-  \item Round Trip Time of Flighte (TRoF)
+  \item Round Trip Time of Flight (TRoF)
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Time of Arrival}
+  \frametitle{Signallaufzeitmessung (ToA)}
+
   \begin{center}
-    \includegraphics[scale=0.5]{img/time1.png}
+    \includegraphics[scale=0.35]{img/time1}\\~\\
+
+    $d = (t_{1} - t_{0}) \cdot c$\\~\\
+    $c=299\,792\,458\;\mathrm{m/s}$
   \end{center}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Time Difference of Arrival}
@@ -141,6 +144,17 @@ Berkeley, 2002.}}
 \frametitle{Time Difference of Arrival\footnote{Janathan Bachrach and Christopher Taylor, Localization in Sensor Networks, Massachusetts Institute of Technology}}
   \begin{center}
     \includegraphics[scale=0.5]{img/tdoa1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Signallaufzeitmessung (RToF)}
+
+  \begin{center}
+    \includegraphics[scale=0.35]{img/time3}\\~\\
+
+    $d = \frac{t_{1} - t_{2} - t_{p}}{2} \cdot c$\\~\\
+    $c=299\,792\,458\;\mathrm{m/s}$
   \end{center}
 \end{frame}
 
