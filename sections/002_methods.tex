@@ -70,7 +70,9 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Signalstärkemessung (RSSI)}
+\frametitle{Signalstärkemessung (RSSI)\footnote{Cameron Whitehouse. The design of calamari: an ad-hoc localization
+system for sensor networks. Master’s thesis, University of California at
+Berkeley, 2002.}}
   \begin{center}
   \includegraphics[scale=0.5]{img/RSSI1}
 
@@ -94,7 +96,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Hop Count }
+  \frametitle{Hop Count}
 
   \begin{center}
   \includegraphics[scale=0.5]{img/hop_count1}
@@ -104,11 +106,35 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Zeitmessung (ToA)}
+\frametitle{Zeitmessung}
 
 \begin{itemize}
-  \item mmmm
+  \item Time of Arrival (ToA)
+  \item Time Difference of Arrival (TDoA)
+  \item Round Trip Time of Flighte (TRoF)
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Time of Arrival}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Time Difference of Arrival}
+\begin{itemize}
+  \item Zusätzlich zur Funkantenne sind alle Nodes hier mit Mikrofon und Lautsprecher ausgerüstet
+  \item Zuerst wird ein Funksignal gesendet und der Empfänger speichert den Zeitpunkt des Empfangs $t_{radio}$
+  \item Nach einer festgelegten Zeit $t_{delay}$ wird eine Tonfolge durch die Lautsprecher ausgegeben und der Empfangszeitpunkt $t_{sound}$ ebenfalls gespeichert
+  \item Die Entfernung kann nun durch $d = (s_{radio} - s_{sound}) * (t_{sound} - t_{radio} - t_{delay})$ \\berechnet werden.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Time Difference of Arrival\footnote{Janathan Bachrach and Christopher Taylor, Localization in Sensor Networks, Massachusetts Institute of Technology}}
+  \begin{center}
+    \includegraphics[scale=0.5]{img/tdoa1.png}
+  \end{center}
 \end{frame}
 
 \begin{frame}
