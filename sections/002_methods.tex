@@ -84,6 +84,22 @@ Berkeley, 2002.}}
 \end{frame}
 
 \begin{frame}
+\frametitle{Signalstärkemessung (RSSI)}
+\begin{itemize}
+  \item Vorteile
+  \begin{itemize}
+    \item leicht zu messen
+    \item keine Zusatzkosten
+  \end{itemize}
+  \item Nachteile
+  \begin{itemize}
+    \item sehr ungenau
+    \item sehr störanfällig
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Hop Count}
 
 \begin{itemize}
@@ -109,6 +125,24 @@ Berkeley, 2002.}}
 \end{frame}
 
 \begin{frame}
+\frametitle{Hop Count}
+
+\begin{itemize}
+  \item Vorteile
+  \begin{itemize}
+    \item leicht zu messen
+    \item keine Zusatzkosten
+  \end{itemize}
+  \item Nachteile
+  \begin{itemize}
+    \item selbst im Optimalfall ungenau
+    \item Wenn keine direkte Sichtlinie besteht, extrem ungenau
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
 \frametitle{Zeitmessung}
 
 \begin{itemize}
@@ -120,7 +154,10 @@ Berkeley, 2002.}}
 
 \begin{frame}
   \frametitle{Signallaufzeitmessung (ToA)}
-
+  \begin{itemize}
+    \item Zur Messung der Entfernung wird ein Radiosignal von einem Knoten zu einem weiteren Knoten geschickt
+    \item Aus der Signallaufzeit wird dann die Entfernung errechnet
+  \end{itemize}
   \begin{center}
     \includegraphics[scale=0.35]{img/time1}\\~\\
 
@@ -143,25 +180,64 @@ Berkeley, 2002.}}
 \begin{frame}
 \frametitle{Time Difference of Arrival\footnote{Janathan Bachrach and Christopher Taylor, Localization in Sensor Networks, Massachusetts Institute of Technology}}
   \begin{center}
-    \includegraphics[scale=0.5]{img/tdoa1.png}
+    \includegraphics[scale=0.5]{img/tdoa1.png}\\~\\
+  $s_{radio}=299\,792\,458\;\mathrm{m/s}$\\
+  $s_{sound}=          343\;\mathrm{m/s}$
   \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{Signallaufzeitmessung (RToF)}
-
+  \begin{itemize}
+    \item ähnlich wie bei der ToA Methode wird hier die Signallaufzeit eines Radiosignals gemessen
+    \item allerdings wird im Gegensatz zur ToA das Signal auch wieder zurückgesendet einschließlich der Information über die Verzögerung
+  \end{itemize}
   \begin{center}
     \includegraphics[scale=0.35]{img/time3}\\~\\
 
-    $d = \frac{t_{1} - t_{2} - t_{p}}{2} \cdot c$\\~\\
+    $d = \frac{t_{1} - t_{0} - t_{p}}{2} \cdot c$\\~\\
     $c=299\,792\,458\;\mathrm{m/s}$
   \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Auftreffwinkel (AoA)}
-
+\frametitle{Signallaufzeitmessung}
 \begin{itemize}
-  \item mmmm
+  \item Vorteile
+  \begin{itemize}
+    \item leicht zu messen 
+    \item keine Zusatzkosten (ToA/RToF)
+  \end{itemize}
+  \item Nachteile
+  \begin{itemize}
+    \item zusätzliche Kosten (TDoA)
+    \item zusätzliches Gewicht 
+    \item zusätzlicher Raum- und Energiebedarf (TDoA)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Auftreffwinkel (AoA)}
+\begin{itemize}
+  \item Um den AoA zu messen wird am Empfangsende eine räumliche Empfangsanordnung benötigt
+  \item Durch die Unterschiede der Phase bzw. der Ankunftszeiten kann dann der Winkel berechnet werden
+  \item Bei ausreichender Menge und guter Anordnung der Antennen kann eine Genauigkeit von wenigen Grad Abweichung erreicht werden
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Auftreffwinkel (AoA)}
+\begin{itemize}
+  \item Vorteile
+  \begin{itemize}
+    \item Einfallswinkel für genaue Positionsbestimmung hilfreich
+  \end{itemize}
+  \item Nachteile
+  \begin{itemize}
+    \item zusätzliche Kosten
+    \item zusätzliches Gewicht
+    \item zusätzlicher Raum- und Energiebedarf
+  \end{itemize}
 \end{itemize}
 \end{frame}
