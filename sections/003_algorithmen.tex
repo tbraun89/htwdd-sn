@@ -1,8 +1,6 @@
 \section{Positionierungs Algorithmen}
 \label{sec:algorithmen}
 
-
-
 \begin{frame}
   \frametitle{Algorithmen\footnote{Gholami, M. R. (2011). Positioning Algorithms for
       WirelessSensor Networks. Chalmers University of Technology.}}
@@ -59,3 +57,46 @@
   \end{center}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Algorithmen}
+
+  \begin{itemize}
+  \item Maximum likelihood
+    \begin{itemize}
+    \item gut auf µC zu berechnen
+    \item kaum Möglichkeiten die \textit{a priori}
+      Wahrscheinlichkeiten für alle Messungen zu erhalten
+    \end{itemize}
+  \item Erweiterter Kalman-Filter
+    \begin{itemize}
+    \item durch Prädiktion und Korrektur gute Ergebnisse
+    \item findet Einsatz in der Praxis (nanoLOC)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kalman-Filter Test}
+
+  \begin{center}
+    \includegraphics[scale=0.5]{img/kalman}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Semidefinite Optimierung}
+
+  \begin{itemize}
+  \item geometrische Beziehungen $k$ der Knoten werden in linearen Matrizen
+    dargestellt
+  \item diese Form der Darstellung ist aber nicht in allen Fällen
+    möglich
+  \item der Algorithmus zur Lösung des Systems hat eine hohe Laufzeit
+    \begin{itemize}
+    \item $O(k^2)$ für AoA
+    \item $O(k^3)$ wenn Hop Counts verwendet werden
+    \end{itemize}
+  \item kaum relevant in echten Anwendungen, da die Laufzeit zu
+    schlecht
+  \end{itemize}
+\end{frame}
