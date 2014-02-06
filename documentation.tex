@@ -1,8 +1,33 @@
-\documentclass{article}
+\documentclass[12pt,a4paper,titlepage]{article}
 
 \usepackage[ngerman]{babel}
 \usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{tocstyle}
+\usepackage{harvard}
+
+\title{\includegraphics[scale=0.3]{img/logo_htw}\\~\\~\\
+Positionierung in Sensornetzen}
+\author{Andr\'{e} Vogler \& Torsten Braun}
+\date{\today}
 
 \begin{document}
-TODO
+\pagenumbering{Roman} 
+\maketitle
+\tableofcontents
+\newpage
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\listoffigures
+\include{acronyms}
+\pagenumbering{arabic} 
+
+% Include sections here
+\include{chapters/introduction}
+
+\newpage
+\pagenumbering{roman}
+\addcontentsline{toc}{section}{Literatur}
+\bibliographystyle{agsm}
+\bibliography{references}
 \end{document}

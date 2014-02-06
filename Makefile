@@ -2,7 +2,7 @@ all: presentation documentation
 
 presentation:
 	ls sections/*.tex | awk '{printf "\\input{%s}\n", $$1}' > frames.tex 
-	latexmk presentation.tex -f -pdf
+	latexmk presentation.tex -bibtex -f -pdf
 
 documentation:
 	latexmk documentation.tex -f -pdf

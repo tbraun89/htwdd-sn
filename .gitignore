@@ -10,3 +10,8 @@ auto
 *~
 *.fls
 frames.tex
+*.lof
+*#
+.#*
+*.bbl
+*.blg
