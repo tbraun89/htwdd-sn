@@ -1,0 +1,38 @@
+\section{Messmethoden}
+\subsection{Anchor\/Beacon Nodes}
+
+Als \textit{Anchor- oder Beacon Nodes} werden die Sensorknoten bezeichnet, deren Position in einem globalen Koordinatensystem bekannt sind.
+Diese Information kann auf zwei Weisen gewonnen werden. Zum ersten ist es möglich, die Sensorknoten die als Ankerknoten fungieren sollen, 
+mit einem GPS-Chip auszustatten und auf diese Weise die Position zu jeder beliebigen Zeit zu ermitteln. Ein solcher Ansatz ist besonders
+für den Fall sinnvoll, wenn der Ankerknoten oder sogar das gesammte Sensornetz die Möglichkeit haben soll mobil zu sein. 
+Die andere Möglichkeit besteht darin, die exakte Position des Ankerknotens fest einzuprogrammieren. Solch ein Ansatz ist empfehlenswert,
+sollte das Sensornetz oder zumindest die Ankerknoten statisch sein. Der große Vorteil dieser Methode der vorprogrammierten Koordinaten ist,
+das keinerlei zusätzlich Hardware am Sensorknoten angebracht werden muss und somit keine weiteren finanziellen Kosten anfallen und ebenso der
+Energiebedarf der Knoten niedrig gehalten werden kann. \\~\\
+Um nun die Ankerknoten effektiv nutzen zu können benötigt man zur Erstellung eines globalen zweidimensionalen Koordinatensystems mindestens
+drei Ankerknoten, welche nicht linear angeordnet sein dürfen. Soll sogar ein dreidimensonales globales Koordinatensystem erzeugt werden, wird
+ein weitere Ankerknoten benötigt. Hier gilt die Einschränkung des zweidimensionalen Falles und zusätzlich muss der vierte Ankerknoten auf einer
+anderen Ebene sein, als die anderen drei. Als sehr effektiv gilt hier die Anordnung als Tetraeder. \\~\\
+Um nun unter Zuhilfenahme der Ankerknoten ein Koordinatensystem aufbauen zu können, gibt es zwei Möglichkeiten. Zum einen ist es realisierbar das 
+ein mit Hilfe aller Sensorknoten erzeugtes relatives Koordinatensystem, nachträglich auf Ankerknoten gelegt werden und somit die relativen Positionen, 
+in globale umrechenbar sind. Andererseits ist es möglich die bekannten Positionen direkt bei den Messungen zu nutzen und so, jede Position eines
+Sensorknotens direkt als globale zu errechnen. 
+
+\subsection{Signalstärkemessung}
+Die Signalstärkemessung oder \ac{RSSI} basiert auf der Idee, die bei einem kabellosen Sensornetz vorhandenen Sender und Empfänger zu nutzen um die 
+Entfernung von Sensorknoten untereinander zu messen. Es wird davon ausgegangen das alle Sensorknoten eine identische Sendeleistung haben und es nun
+möglich sein sollte über die ankommende Signalstärke exakt zu berechnen, wie weit der emittierende Sensorknoten vom empfangenden entfernt ist. Als 
+physikalische Grundlage dient an dieser Stelle, das die Signalstärke im Vakuum, quadratisch zur zurückgelegten Entfernung abnimmt. In der Praxis 
+hat sich allerdings herausgestellt das die Signalstärke durch aller Hand Störfaktoren, wie Luftfeuchtigkeit und -temperatur aber auch Störstrahlung 
+und Hindernisse welche das Signal reflektiven oder absorbieren, beeinflusst wird. Die folgende Abbildung zeigt das Ergebnis einer Messreihe und es 
+wird hier deutlich, dass das reale Messergebnis in keiner Weise mit dem idealen kreisförmigen Ergebnis der Theorie übereinstimmt. 
+
+\begin{figure}
+  \caption{RSSI Meassurement}
+  \includegraphics[scale=0.75]{img/RSSI1}\\
+  \cite{whitehouse}
+\end{figure}
+
+\subsection{Hop Count}
+blabla
+
