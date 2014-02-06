@@ -6,6 +6,14 @@
 \usepackage[printonlyused,withpage]{acronym}
 \usepackage{tocstyle}
 \usepackage{harvard}
+\usepackage{tocloft}
+\usepackage{amsmath}
+\usepackage{framed}
+
+\newcommand{\listequationsname}{\Large{Formelverzeichnis}} 
+\newlistof{myequations}{equ}{\listequationsname} 
+\newcommand{\myequations}[1]{% 
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par} 
 
 \title{\includegraphics[scale=0.3]{img/logo_htw}\\~\\~\\
 Positionierung in Sensornetzen}
@@ -19,12 +27,16 @@ Positionierung in Sensornetzen}
 \newpage
 \addcontentsline{toc}{section}{Abbildungsverzeichnis}
 \listoffigures
+\newpage
+\addcontentsline{toc}{section}{Formelverzeichnis}
+\listofmyequations
 \include{acronyms}
 \pagenumbering{arabic} 
 
 % Include sections here
 \include{chapters/introduction}
 \include{chapters/messmethoden}
+\include{chapters/algoritms}
 
 \newpage
 \pagenumbering{roman}
