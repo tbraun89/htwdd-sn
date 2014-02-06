@@ -1,1 +1,38 @@
-\section{Einführung}
+\section{Einleitung}
+
+Bei der Positionierung in Sensornetzen geht es darum, die Position
+einzelner Sensoren herauszufinden. Dabei muss zwischen globaler und
+lokaler Lokalisierung unterschieden werden. Die Lokalisierung der
+einzelnen Sonsorknoten ist wichtig, da das Netztwerk sonst nicht weiß,
+wo die entsprechenden Sensordaten herkommen und wie diese Daten
+behandelt werden.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{img/lokalisierung_1}
+
+  \caption{Beispiel für die Bedeutung der Lokalisierung in
+    Sensornetzen}
+  \label{fig:local}
+\end{figure}
+
+Abbildung \ref{fig:local} zeigt ein Sensornetz, in dem ein durch einen
+Knoten ein Feuer gemeldet wird. Diese Information muss zur Zentrale
+weiter geleitet werden, damit dort zum einen die Position des Feuers
+bestimmt werden kann. Dafür müssen die Knoten die Position ihrer
+Nachbarn kennen und die Position der Basis, damit die Information zum
+einen an der richtigen Stelle ankommt. Desweiteren kann so auch der
+kürzeste Pfad direkt in der Basis berechnet werden, wenn diese weiß,
+wo die Daten herkommen und welche Sensoren sie dafür passiert haben.
+\cite{gholami2011} 
+
+Eines der größten Probleme bei der Lokalisierung besteht darin, dass
+jedem Knoten nur sehr begreznte Resourcen zur verfügung stehen.
+Meistens verfügen diese über einen \ac{uC} der eine geringe
+Rechenleistung und Speicherkapazität hat und zudem möglichst
+Stromspaarend arbeiten muss. \cite{timmermann} Ein weiteres Problem
+besteht darin, dass die Position von Knoten nicht stationär sein muss,
+somit müssen die Berechnugen und Messungen direkt von den \ac{uC}'s
+durchgeführet und wiederholt werden. \cite{roehrig2009}  Dafür werden
+bestimmte Verfahren und Algorithmen benötigt, die wir in dieser
+Ausarbeitung vorstellen und diskutieren werden.
