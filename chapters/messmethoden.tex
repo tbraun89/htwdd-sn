@@ -39,24 +39,50 @@ Die Messmethode des Hop Count basiert auf der Annahme, dass jeder Knoten der err
 Signalstärke spielt hierbei keine Rolle. Über alle Sensorknoten wird ein ungerichteter Graph aufgebaut, wobei die Microcontroller die Knoten sind und die Verbindungen der Sensorknoten die Kanten.
 \begin{figure}
   \caption{Hop Count}
-  \includegraphics[scale=0.75]{img/hop_count1}\\
+  \includegraphics[scale=0.60]{img/hop_count1}\\
 \end{figure}
 
 \subsection{Zeitmessung}
 Im Bereich der Zeitmessung werden hier drei Methoden vorgestellt. Im speziellen sind dies die \ac{ToA}, die \ac{TDoA} und die \ac{RToF}.
-\subsubsection{\ac{ToA}}
+\subsubsection{Time of Arrival}
 Die \ac{ToA} basiert auf der Berechnung des Zeitunterschieds zwischen Absenden und Empfang eines Signals. Als Berechnungsgrundlage wird hier
 die Geschwindigkeit des Funksignals verwendet, die annähernd der Lichtgeschwindigkeit im Vakuum entspricht, hierraus kann dann einfach die 
-Entfernung berechnet werden. Eine grafische Dartellung dazu wird in Abbildung \ref{fig:ToA} gezeigt. Diese Methode ist zwar äußerst genau, aber nur unter der Vorraussetzung Das die Zeiten auf den beteiligten Sensorknoten absolut synchron laufen.  
-\begin{figure}
+Entfernung berechnet werden. Eine grafische Dartellung dazu wird in Abbildung \ref{fig:ToA} gezeigt. Diese Methode ist zwar äußerst genau, aber nur unter der Vorraussetzung, dass die Zeiten auf den beteiligten Sensorknoten absolut synchron laufen. Da dies nicht ohne weiteres zu bewerkstelligen ist, wurden verfeinerte Verfahren der Zeitmessung entwickelt, die ohne Synchronisation der einzelnen Knoten arbeiten können. 
+\begin{figure}[h!]    
   \caption{ToA}
     \includegraphics[scale=0.35]{img/time1}\\~\\
-
-    $d = (t_{1} - t_{0}) \cdot c$\\~\\
-    $c=299\,792\,458\;\mathrm{m/s}$
     \label{fig:ToA}
+    $d = (t_{1} - t_{0}) \cdot c$\\
+    $c=299\,792\,458\;\mathrm{m/s}$
+    
 \end{figure}
-\subsubsection{\ac{TDoA}}
-blab
-\subsubsection{\ac{RToF}}
-blab
+\subsubsection{Time Difference of Arrival}
+Die \ac{TDoA} nutzt zur Umgehung des oben genannten Problems die Tatsache, dass sich Schallwellen deutlich langssamer ausbreiten als Funkwellen. Um dies zu nutzen werden alle Sensorknoten zusätzlich zur Funkfähigkeit noch mit jeweils einem Mikrofon und einem Lautsprecher ausgerüstet. Zur Messung wird nun zuerst per Funk ein Signal abgesendet und nach einer fest definierten Pause, die auch 0 sein kann, wird per Lautsprecher eine Tonfolge abgegeben. Nach dem beides vom Zielknoten empfangen wurde, kann aus der Differenz der Ankunftszeiten die Entfernung zum Senderknoten berechnet werden. Hierfür nutzt man folgende Formel:
+\begin{equation}
+  \label{eq:TDoA}
+    d = (s_{radio} - s_{sound}) * (t_{sound} - t_{radio} - t_{delay})
+\end{equation}
+\myequations{Time Difference of Arrival: Entfernungsberechnung}
+Die Hiermit ausgerechnet Entfernung ist sehr genau, unter der Vorraussetzung das zwischen Sender und Empfänger keinerlei Hinderniss existiert. Der große Nachteil dieser Messmethode ist der zusätzlich Bedarf an Hardware, welcher sowohl zu höheren Kosten als auch höherem Energieverbrauch führt. Ebenso werden die Sensorknoten durch die hinzugekommene Hardware größer.
+\begin{figure}[h!]
+  \caption{TDoA}
+   \includegraphics[scale=0.35]{img/tdoa1.png}\\
+   \cite{bachrach}\\~\\
+   $s_{radio}=299\,792\,458\;\mathrm{m/s}$\\
+   $s_{sound}=          343\;\mathrm{m/s}$
+   \label{fig:TDoA}
+\end{figure}
+\subsubsection{Round Trip Time of Flight}
+Die dritte und letzte Messmethode auf Basis der Zeitmessung die vorgestellt wird, ist die \ac{RToF}. Bei dieser Methode wird bei der ToA Methode nur der Funksender benötigt. Um das Problem der Synchronisierung zu umgehen, wird das empfangene Funksignal zum Sender nach einer vordefinierten Pause zurückgesendet. Über diese Signallaufzeit kann nun die Entfernung wie folgt berechnet werden.
+\begin{equation}
+  \label{eq:RToF}
+    d = \frac{t_{1} - t_{0} - t_{p}}{2} \cdot c
+\end{equation}
+\myequations{Round Trip Time of Arrival: Entfernungsberechnung}
+wobei $t_{1}$ der Empfangszeitpunkt am Sendeknoten, $t_{0}$ der Sendezeitpunkt und $t_{p}$ die Länge der Pause zwischen Empfangs- und Rücksendezeitpunkt des Signals am Empfängerknoten sind.
+Grafisch ist dies in Abbildung \ref{fig:RToF} dargestellt.
+\begin{figure}[h!]
+  \caption{RToF}
+  \includegraphics[scale=0.35]{img/time3}
+  \label{fig:RToF}
+\end{figure}
