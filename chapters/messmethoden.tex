@@ -45,24 +45,34 @@ wird hier deutlich, dass das reale Messergebnis in keiner Weise mit dem idealen 
   \label{fig:RSSI}
   \caption{RSSI Meassurement}
 \end{figure}
-
+\newpage
 \subsection{Hop Count}
 Die Messmethode des Hop Count basiert auf der Annahme, dass jeder Knoten der erreichbar ist, innerhalb der Sendereichweite R liegt. Die empfangene
 Signalstärke spielt hierbei keine Rolle. Über alle Sensorknoten wird
 ein ungerichteter Graph aufgebaut, wobei die Microcontroller die
 Knoten sind und die Verbindungen der Sensorknoten die Kanten.
-
+Der Hop Count besitzt mehrere Schwächen. Zum einen ist eine direkte Sichtverbindung der Sensorknoten zu einander erforderlich,
+sonst kann die Entfernungsmessung einen teils enorm falschen Wert annehmen. Wie in Abbildung \ref{fig:hop} gezeigt wird, sind nach einer Hop Count Messung die Knotenentfernungen A $\to$ C und B $\to$ D identisch 4. Für die Entfernung von A $\to$ C ist diese Messung relativ genau, für die durch ein Hinderniss getrennten Knoten B und D wird allerdings eine deutlich zu hohe Entfernung berechnet. Aber selsbt wenn eine direkte Sichtverbindung zwischen den Knoten besteht bekommt vom Hop Count direkt nur eine Maximalentfernung über die kürzeste Verbindung der Knoten. 
+\begin{framed}
+\begin{equation}
+  \includegraphics[scale=1]{img/hop}
+  \label{eq:hop}
+\end{equation}
+\myequations{Hop Count: Verfeinerung der Entfernung}
+\end{framed}
+Durch Anwendung der Formel \ref{eq:hop} kann man die ansonsten äußerst ungenau Entfernungsangabe deutlich verbessern. $n_{local}$ stellt hierbei die Anzahl benachbarter bzw. erreichbarer Knoten dar. Wobei hier die besten Ergebnisse erzielt werden, wenn mindestens 5 und nicht mehr als 15 Sensorknoten in diesem Bereich liegen. \cite{bachrach} Hierdurch kann der mittlere Fehler von 0.5R auf 0.2R reduziert werden, wobei R der Radius der Signalstärke ist.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.60]{img/hop_count1}
   \caption{Hop Count}
+  \label{fig:hop}
 \end{figure}
-
+\newpage
 \subsection{Zeitmessung}
-Im Bereich der Zeitmessung werden hier drei Methoden vorgestellt. Im speziellen sind dies die \ac{ToA}, die \ac{TDoA} und die \ac{RToF}.
+Im Bereich der Zeitmessung werden hier drei Methoden vorgestellt. Im speziel-len sind dies die \ac{ToA}, die \ac{TDoA} und die \ac{RToF}.
 \subsubsection{Time of Arrival}
 Die \ac{ToA} basiert auf der Berechnung des Zeitunterschieds zwischen Absenden und Empfang eines Signals. Als Berechnungsgrundlage wird hier
-die Geschwindigkeit des Funksignals verwendet, die annähernd der Lichtgeschwindigkeit im Vakuum entspricht, hierraus kann dann einfach die 
+die Geschwin-digkeit des Funksignals verwendet, die annähernd der Lichtgeschwindigkeit im Vakuum entspricht, hierraus kann dann einfach die 
 Entfernung berechnet werden. Eine grafische Dartellung dazu wird in Abbildung \ref{fig:ToA} gezeigt. Diese Methode ist zwar äußerst genau, aber nur unter der Vorraussetzung, dass die Zeiten auf den beteiligten Sensorknoten absolut synchron laufen. Da dies nicht ohne weiteres zu bewerkstelligen ist, wurden verfeinerte Verfahren der Zeitmessung entwickelt, die ohne Synchronisation der einzelnen Knoten arbeiten können. 
 
 \begin{figure}[h!]    
@@ -112,11 +122,12 @@ ToA Methode nur der Funksender benötigt. Um das Problem der
 Synchronisierung zu umgehen, wird das empfangene Funksignal zum Sender
 nach einer vordefinierten Pause zurückgesendet. Über diese
 Signallaufzeit kann nun die Entfernung wie folgt berechnet werden.
-
+\begin{framed}
 \begin{equation}
   \label{eq:RToF}
     d = \frac{t_{1} - t_{0} - t_{p}}{2} \cdot c
 \end{equation}
+\end{framed}
 \myequations{Round Trip Time of Arrival: Entfernungsberechnung}
 
 Wobei $t_{1}$ der Empfangszeitpunkt am Sendeknoten, $t_{0}$ der
@@ -132,4 +143,4 @@ Grafisch ist dies in Abbildung \ref{fig:RToF} dargestellt.
 \end{figure}
 
 \subsection{Auftreffwinkel (AoA)}
-Die Methode des \ac{AoA} erzeugt die Zusatzinformation des Winkels in welchem der Sender zum Empfänger steht. Diesen Winkel zu wissen ermöglicht erst die Berechnungsmethode der Triangulation, die im Gegensatz zur Trilateration mit nur zwei Fixpunkten auskommt und zusammen mit dem Winkel dann einen dritten oder beliebig viele weitere zu berechnen. 
+Die Methode des \ac{AoA} erzeugt die Zusatzinformation des Winkels in welchem der Sender zum Empfänger steht. Diesen Winkel zu wissen ermöglicht erst die Berechnungsmethode der Triangulation, die im Gegensatz zur Trilateration mit nur zwei Fixpunkten auskommt und zusammen mit dem Winkel dann einen dritten oder beliebig viele weitere zu berechnen. Um nun den Winkel zu berechnen mit dem ein Signal auf den Empfänger auftrifft, wird eine spezielle Anordnung von Empfägern benötigt. Es ist nötig, je nach Art des ausgesendeten Signals, entweder mehrere Funkempfänger oder mehrere Microphone räumlich so auf dem Empfänger anzuordnen das mit Hilfe der unterschiedlichen Empfangszeitpunkte ein Winkel errechnet werden kann. Bei guter Anordnung der Empfänger, kann hier eine Genauigkeit bis auf wenige Grad erreicht werden. Der Nachteil dieser Methode ist offensichtlich der enorme zusätzliche Hardwareaufwand, der wie immer auch mit einem erhöhten Energiebedarf einhergeht. 
