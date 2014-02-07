@@ -24,15 +24,39 @@ Entfernung von Sensorknoten untereinander zu messen. Es wird davon ausgegangen d
 möglich sein sollte über die ankommende Signalstärke exakt zu berechnen, wie weit der emittierende Sensorknoten vom empfangenden entfernt ist. Als 
 physikalische Grundlage dient an dieser Stelle, das die Signalstärke im Vakuum, quadratisch zur zurückgelegten Entfernung abnimmt. In der Praxis 
 hat sich allerdings herausgestellt das die Signalstärke durch aller Hand Störfaktoren, wie Luftfeuchtigkeit und -temperatur aber auch Störstrahlung 
-und Hindernisse welche das Signal reflektiven oder absorbieren, beeinflusst wird. Die folgende Abbildung zeigt das Ergebnis einer Messreihe und es 
+und Hindernisse welche das Signal reflektiven oder absorbieren, beeinflusst wird. Die Abbildung \ref{fig:RSSI} zeigt das Ergebnis einer Messreihe und es 
 wird hier deutlich, dass das reale Messergebnis in keiner Weise mit dem idealen kreisförmigen Ergebnis der Theorie übereinstimmt. 
 
 \begin{figure}
   \caption{RSSI Meassurement}
   \includegraphics[scale=0.75]{img/RSSI1}\\
   \cite{whitehouse}
+  \label{fig:RSSI}
 \end{figure}
 
 \subsection{Hop Count}
-blabla
+Die Messmethode des Hop Count basiert auf der Annahme, dass jeder Knoten der erreichbar ist, innerhalb der Sendereichweite R liegt. Die empfangene
+Signalstärke spielt hierbei keine Rolle. Über alle Sensorknoten wird ein ungerichteter Graph aufgebaut, wobei die Microcontroller die Knoten sind und die Verbindungen der Sensorknoten die Kanten.
+\begin{figure}
+  \caption{Hop Count}
+  \includegraphics[scale=0.75]{img/hop_count1}\\
+\end{figure}
 
+\subsection{Zeitmessung}
+Im Bereich der Zeitmessung werden hier drei Methoden vorgestellt. Im speziellen sind dies die \ac{ToA}, die \ac{TDoA} und die \ac{RToF}.
+\subsubsection{\ac{ToA}}
+Die \ac{ToA} basiert auf der Berechnung des Zeitunterschieds zwischen Absenden und Empfang eines Signals. Als Berechnungsgrundlage wird hier
+die Geschwindigkeit des Funksignals verwendet, die annähernd der Lichtgeschwindigkeit im Vakuum entspricht, hierraus kann dann einfach die 
+Entfernung berechnet werden. Eine grafische Dartellung dazu wird in Abbildung \ref{fig:ToA} gezeigt. Diese Methode ist zwar äußerst genau, aber nur unter der Vorraussetzung Das die Zeiten auf den beteiligten Sensorknoten absolut synchron laufen.  
+\begin{figure}
+  \caption{ToA}
+    \includegraphics[scale=0.35]{img/time1}\\~\\
+
+    $d = (t_{1} - t_{0}) \cdot c$\\~\\
+    $c=299\,792\,458\;\mathrm{m/s}$
+    \label{fig:ToA}
+\end{figure}
+\subsubsection{\ac{TDoA}}
+blab
+\subsubsection{\ac{RToF}}
+blab
