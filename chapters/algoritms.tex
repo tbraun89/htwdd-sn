@@ -7,6 +7,7 @@ Position zu bestimmen. Zwei Grundlegende Methoden zur Bestimmung der
 Position sind \textbf{Triangulation} und \textbf{Trilateration}, die
 die Grundlage zu anderen Verfahren bilden.
 
+
 \subsection{Triangulation}
 
 Wird das \ac{AoA} Verfahren verwendet müssen mindestens zwei ortsfeste
@@ -123,4 +124,92 @@ ungenaue Ergebnisse, vor allem bei mobielen Knoten ist der Fehler sehr
 groß. Auß diesem Grund werden weitere Verfahren benötigt, um die
 Wahrscheinlichkeit zu maximieren, dass die berechnete Position stimmt.
 
-% TODO Algos hinzufügen 
+
+\subsubsection{Klassische Schätzer: Maximum likelihood}
+
+Unter der Annahme, dass alle Messfehler unabhängig und Gleichverteilt
+sind und die \ac{PDF} $p_{M_{ij}}(m_{ij} \vert X)$ mit $X
+= \begin{bmatrix}X_{1}, ..., X_{m}\end{bmatrix}^{\top} \in
+\mathbb{R}^{2 \times M}$ ist, kann die Schätzfunktion wie folgt
+geschrieben werden.
+
+\begin{framed}
+  \begin{equation}
+    \label{eq:maxlike}
+    \hat H = \arg \max_{X \in \mathbb{R}^{2 \times M}} \sum_{i=1}^{M}
+    \sum_{j \in \alpha_{i} \bigcup \beta_{i}} \log p_{M_{ij}}(m_{ij}
+    \vert X)
+  \end{equation}
+\end{framed}
+\myequations{Maximum likelihood}
+
+Der Schätzer ist asymptotisch effizient, dafür wird aber eine
+komplette Statistik der Messfehler benötigt. Aus diesem Grund ist es
+in der Praxis meist nicht möglich, alle \textit{a priori}
+Wahrscheinlichkeiten \ac{uC} zu halte.
+
+Da das \ac{ML} Problem NP-Vollständig ist, kann man keine Aussage
+darüber treffen, ob es in einer \textit{guten} Zeit eine brauchbare
+Lösung findet. Darum gibt es weitere Ansätze, so kann das \ac{ML}
+Problem z.B. in ein \ac{SDP}s Problem umgewandelt werden. Desweiteren
+gibt es Ansätze, das Problem in Probleme der Mengenlehre umzuformen.
+Dabei ergibt sich dann z.B. ein \ac{CFP}. Auf dem meisten kleinen
+Knoten, sind dann diese Berechnungen allerdings nicht mehr einfach
+durchführbar. \cite{gholami2011}
+
+
+\subsubsection{Erweiterter Kalman Filter}
+
+Die bereits beschriebene \textit{Trilateration} kann auch durch einen
+\ac{EKF} verbessert werden. Dieser berechnet rekursiv die Position des
+Punktes anhand der Messadaten und verwendet dabei einen Prädikt-ions
+und einen Korrektur-Schritt um die Schätzung zu verbessern und den
+Messfehler auszugleiuchen. Diese Methode ist vorallem bei mobielen
+Knoten sehr hilfreich wie in der Abbildung \ref{fig:ekf} zu erkennen
+ist.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.7]{img/kalman}
+
+  \caption{Erweiterter Kalman Filter}
+  \label{fig:ekf}
+\end{figure}
+
+\newpage
+Der \ac{EKF} arbeitet dabei mit folgenden drei Schritten:
+
+\begin{enumerate}
+\item \textbf{Prädiktion} -- Es wird eine Vorhersage der Position des
+  Knotens bestimmt.
+\item \textbf{Messung} -- Die Position wird mittels der
+  Trilateration gemessen.
+\item \textbf{Korrektur} -- Die Daten der \textit{Prädiktion} und
+  \textit{Messung} werden miteinander Abgeglichen.
+\end{enumerate}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.6]{img/kalman2}
+
+  \caption{Schritte des - Erweiterter Kalman Filter}
+  \label{fig:ekf}
+\end{figure}
+
+Der Vorteil des \ac{EKF} ist hier, dass die Positionsbestimmung zu
+Beginn zwar noch sehr Ungenau ist, da noch kaum Messadaten vorhanden
+sind, diese duch den Korrekturschritt aber immer besser wird.
+
+Ein System, bei dem solche Verfahren zum Einsatz kommen sind z.B. die
+\ac{FTS} des Unternehmens \textit{MLR System GmbH}, dabei kann ein
+Fahrzeug über ein Sensornetz gesteuert selbständig seine Aufgaben
+erledigen. Die Abbildung \ref{fig:fg} zeigt z.B. einen fahrerlosen
+Gabelhubwagen der diesen Anforderungen entspricht.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=1.0]{img/Fahr_Gabelhubwagen}
+
+  \caption{Fahrerloser Gabelhubwagen}
+  \label{fig:fg}
+\end{figure}
